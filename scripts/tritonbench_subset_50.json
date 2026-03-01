@@ -1,0 +1,463 @@
+{
+  "metadata": {
+    "source": "TritonBench-G",
+    "original_size": 184,
+    "subset_size": 50,
+    "sampling_method": "Two-Phase Stratified Sampling",
+    "seed": 42
+  },
+  "kernels": [
+    "attention_fwd_triton1.py",
+    "attention_fwd_triton2.py",
+    "attention_kernel.py",
+    "bgmv_expand_slice.py",
+    "chunk_cumsum_vector.py",
+    "chunk_gate_recurrence.py",
+    "context_attn_bloom.py",
+    "cosine_compute.py",
+    "cross_entropy_ops.py",
+    "embedding_triton_kernel.py",
+    "fast_ce_loss.py",
+    "fast_rope_embedding.py",
+    "flash_decode2_llama.py",
+    "flash_decode2_phi.py",
+    "fused_layernorm_triton.py",
+    "fused_recurrent_retention.py",
+    "int8_matmul_quantization.py",
+    "int_scaled_matmul.py",
+    "kcache_copy_triton.py",
+    "kldiv_triton.py",
+    "ksoftmax_triton.py",
+    "layer_norm_welfold.py",
+    "logsumexp_fwd.py",
+    "matmul_dequantize_int4.py",
+    "matmul_kernel.py",
+    "matrix_reduction.py",
+    "matrix_transpose.py",
+    "matrix_vector_multip.py",
+    "pow_scalar_tensor.py",
+    "quantize_copy_kv.py",
+    "quantize_kv_copy.py",
+    "relu_strided_buffer.py",
+    "relu_triton_kernel.py",
+    "reversed_cumsum_scalar.py",
+    "rms_matmul_rbe.py",
+    "rmsnorm_fused_llama.py",
+    "rope_backward_transform.py",
+    "softmax_triton1.py",
+    "softmax_triton2.py",
+    "softmax_triton3.py",
+    "square_matrix.py",
+    "streamk_matmul.py",
+    "swiglu_backward.py",
+    "swiglu_triton.py",
+    "triton_argmax.py",
+    "triton_attention.py",
+    "triton_matmul.py",
+    "triton_mul2.py",
+    "uniform_sampling.py",
+    "var_len_copy.py"
+  ],
+  "detailed": [
+    {
+      "file": "cosine_compute.py",
+      "difficulty": 1,
+      "loc": 18,
+      "category": "Element-wise Ops",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "flash_decode2_phi.py",
+      "difficulty": 2,
+      "loc": 74,
+      "category": "Attention",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "matmul_kernel.py",
+      "difficulty": 2,
+      "loc": 35,
+      "category": "MatMul/GEMM",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "matrix_transpose.py",
+      "difficulty": 2,
+      "loc": 33,
+      "category": "Memory/Index Ops",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "triton_mul2.py",
+      "difficulty": 2,
+      "loc": 41,
+      "category": "Normalization",
+      "has_autotune": false,
+      "triton_kernels": 2
+    },
+    {
+      "file": "square_matrix.py",
+      "difficulty": 2,
+      "loc": 33,
+      "category": "Other",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "triton_argmax.py",
+      "difficulty": 2,
+      "loc": 134,
+      "category": "Reduction",
+      "has_autotune": false,
+      "triton_kernels": 3
+    },
+    {
+      "file": "softmax_triton1.py",
+      "difficulty": 2,
+      "loc": 36,
+      "category": "Softmax",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "flash_decode2_llama.py",
+      "difficulty": 3,
+      "loc": 53,
+      "category": "Attention",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "pow_scalar_tensor.py",
+      "difficulty": 3,
+      "loc": 135,
+      "category": "Element-wise Ops",
+      "has_autotune": false,
+      "triton_kernels": 2
+    },
+    {
+      "file": "embedding_triton_kernel.py",
+      "difficulty": 3,
+      "loc": 56,
+      "category": "Embedding/RoPE",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "relu_strided_buffer.py",
+      "difficulty": 3,
+      "loc": 133,
+      "category": "Fused Ops/Activation",
+      "has_autotune": false,
+      "triton_kernels": 2
+    },
+    {
+      "file": "swiglu_backward.py",
+      "difficulty": 3,
+      "loc": 79,
+      "category": "Fused Ops/Activation",
+      "has_autotune": true,
+      "triton_kernels": 1
+    },
+    {
+      "file": "swiglu_triton.py",
+      "difficulty": 3,
+      "loc": 92,
+      "category": "Fused Ops/Activation",
+      "has_autotune": false,
+      "triton_kernels": 3
+    },
+    {
+      "file": "chunk_cumsum_vector.py",
+      "difficulty": 3,
+      "loc": 57,
+      "category": "Linear Attention/SSM",
+      "has_autotune": true,
+      "triton_kernels": 1
+    },
+    {
+      "file": "reversed_cumsum_scalar.py",
+      "difficulty": 3,
+      "loc": 44,
+      "category": "Linear Attention/SSM",
+      "has_autotune": true,
+      "triton_kernels": 1
+    },
+    {
+      "file": "kldiv_triton.py",
+      "difficulty": 3,
+      "loc": 139,
+      "category": "Loss Functions",
+      "has_autotune": false,
+      "triton_kernels": 2
+    },
+    {
+      "file": "triton_matmul.py",
+      "difficulty": 3,
+      "loc": 92,
+      "category": "MatMul/GEMM",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "var_len_copy.py",
+      "difficulty": 3,
+      "loc": 19,
+      "category": "Memory/Index Ops",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "layer_norm_welfold.py",
+      "difficulty": 3,
+      "loc": 129,
+      "category": "Normalization",
+      "has_autotune": true,
+      "triton_kernels": 1
+    },
+    {
+      "file": "rmsnorm_fused_llama.py",
+      "difficulty": 3,
+      "loc": 46,
+      "category": "Normalization",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "uniform_sampling.py",
+      "difficulty": 3,
+      "loc": 97,
+      "category": "Other",
+      "has_autotune": false,
+      "triton_kernels": 2
+    },
+    {
+      "file": "quantize_kv_copy.py",
+      "difficulty": 3,
+      "loc": 78,
+      "category": "Quantization",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "matrix_reduction.py",
+      "difficulty": 3,
+      "loc": 33,
+      "category": "Reduction",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "softmax_triton2.py",
+      "difficulty": 3,
+      "loc": 36,
+      "category": "Softmax",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "softmax_triton3.py",
+      "difficulty": 3,
+      "loc": 65,
+      "category": "Softmax",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "attention_fwd_triton1.py",
+      "difficulty": 4,
+      "loc": 71,
+      "category": "Attention",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "attention_fwd_triton2.py",
+      "difficulty": 4,
+      "loc": 96,
+      "category": "Attention",
+      "has_autotune": false,
+      "triton_kernels": 2
+    },
+    {
+      "file": "attention_kernel.py",
+      "difficulty": 4,
+      "loc": 134,
+      "category": "Attention",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "triton_attention.py",
+      "difficulty": 4,
+      "loc": 277,
+      "category": "Attention",
+      "has_autotune": false,
+      "triton_kernels": 3
+    },
+    {
+      "file": "matrix_vector_multip.py",
+      "difficulty": 4,
+      "loc": 64,
+      "category": "Element-wise Ops",
+      "has_autotune": true,
+      "triton_kernels": 1
+    },
+    {
+      "file": "fast_rope_embedding.py",
+      "difficulty": 4,
+      "loc": 101,
+      "category": "Embedding/RoPE",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "rope_backward_transform.py",
+      "difficulty": 4,
+      "loc": 97,
+      "category": "Embedding/RoPE",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "relu_triton_kernel.py",
+      "difficulty": 4,
+      "loc": 21,
+      "category": "Fused Ops/Activation",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "chunk_gate_recurrence.py",
+      "difficulty": 4,
+      "loc": 124,
+      "category": "Linear Attention/SSM",
+      "has_autotune": false,
+      "triton_kernels": 2
+    },
+    {
+      "file": "fused_recurrent_retention.py",
+      "difficulty": 4,
+      "loc": 180,
+      "category": "Linear Attention/SSM",
+      "has_autotune": false,
+      "triton_kernels": 2
+    },
+    {
+      "file": "cross_entropy_ops.py",
+      "difficulty": 4,
+      "loc": 255,
+      "category": "Loss Functions",
+      "has_autotune": false,
+      "triton_kernels": 2
+    },
+    {
+      "file": "fast_ce_loss.py",
+      "difficulty": 4,
+      "loc": 236,
+      "category": "Loss Functions",
+      "has_autotune": false,
+      "triton_kernels": 3
+    },
+    {
+      "file": "int8_matmul_quantization.py",
+      "difficulty": 4,
+      "loc": 180,
+      "category": "MatMul/GEMM",
+      "has_autotune": true,
+      "triton_kernels": 2
+    },
+    {
+      "file": "int_scaled_matmul.py",
+      "difficulty": 4,
+      "loc": 189,
+      "category": "MatMul/GEMM",
+      "has_autotune": false,
+      "triton_kernels": 2
+    },
+    {
+      "file": "matmul_dequantize_int4.py",
+      "difficulty": 4,
+      "loc": 182,
+      "category": "MatMul/GEMM",
+      "has_autotune": true,
+      "triton_kernels": 1
+    },
+    {
+      "file": "rms_matmul_rbe.py",
+      "difficulty": 4,
+      "loc": 179,
+      "category": "MatMul/GEMM",
+      "has_autotune": false,
+      "triton_kernels": 2
+    },
+    {
+      "file": "streamk_matmul.py",
+      "difficulty": 4,
+      "loc": 215,
+      "category": "MatMul/GEMM",
+      "has_autotune": false,
+      "triton_kernels": 5
+    },
+    {
+      "file": "kcache_copy_triton.py",
+      "difficulty": 4,
+      "loc": 114,
+      "category": "Memory/Index Ops",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "fused_layernorm_triton.py",
+      "difficulty": 4,
+      "loc": 121,
+      "category": "Normalization",
+      "has_autotune": true,
+      "triton_kernels": 1
+    },
+    {
+      "file": "bgmv_expand_slice.py",
+      "difficulty": 4,
+      "loc": 132,
+      "category": "Other",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "quantize_copy_kv.py",
+      "difficulty": 4,
+      "loc": 47,
+      "category": "Quantization",
+      "has_autotune": false,
+      "triton_kernels": 1
+    },
+    {
+      "file": "logsumexp_fwd.py",
+      "difficulty": 4,
+      "loc": 69,
+      "category": "Reduction",
+      "has_autotune": true,
+      "triton_kernels": 1
+    },
+    {
+      "file": "ksoftmax_triton.py",
+      "difficulty": 4,
+      "loc": 154,
+      "category": "Softmax",
+      "has_autotune": true,
+      "triton_kernels": 2
+    },
+    {
+      "file": "context_attn_bloom.py",
+      "difficulty": 5,
+      "loc": 152,
+      "category": "Attention",
+      "has_autotune": false,
+      "triton_kernels": 1
+    }
+  ]
+}

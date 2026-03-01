@@ -1,0 +1,20 @@
+# PyTorch and Triton
+torch>=2.5.0
+triton>=3.1.0
+
+# Core dependencies
+numpy>=1.24.0
+openai>=1.0.0
+tqdm>=4.60.0
+
+# Utilities
+PyYAML>=6.0
+rank-bm25>=0.2.2
+loguru>=0.7.0
+tenacity>=8.0.0
+
+# Optional dependencies (uncomment as needed)
+# boto3                   # For Claude model support (AWS Bedrock)
+# pandas>=2.0.0           # For check_correctness.py analysis script
+# matplotlib>=3.5.0       # For analysis scripts
+# openpyxl>=3.1.0         # For Excel report generation

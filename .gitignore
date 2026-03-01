@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+
+# Outputs and logs
+*output*/
+*tmp*/
+*log*/
+*.log
+*.csv
+
+# NCU profiler cache
+*ncu_profiler_cache/
+
+# IDE
+.vscode/
+
+# OS
+.DS_Store
+
+# Data directory - GPU-specific generated baselines
+data/TritonBench/performance_metrics/perf_G/NVIDIA_*_golden_metrics/
+data/TritonBench/performance_metrics/perf_G/__pycache__/
+data/TritonBench/data/__pycache__/
+data/TritonBench/data/TritonBench_G_v1/__pycache__/
+
+paper/

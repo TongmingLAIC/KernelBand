@@ -1,0 +1,75 @@
+# Test configuration for KernelBand
+# This config uses simple kernels for testing
+
+# LLM model
+api_key: ""  # Will use OPENAI_API_KEY environment variable
+model_id: "gpt-4o-mini"
+model_type: "openai"
+temperature: 1.0
+max_tokens: 16384
+
+# TritonBench dataset paths
+statis_path: "data/TritonBench/statistics.json"
+py_folder: "data/TritonBench/kernels"
+instruction_path: "data/TritonBench/statistics.json"
+corpus_path: "data/TritonBench/corpus/train_crawl.json"
+golden_metrics: "data/TritonBench/perf_metrics/golden_metrics"
+perf_ref_folder: null
+perf_G_path: "data/TritonBench/perf_metrics"
+py_interpreter: "python"
+result_path: null
+mem_file: null
+start_iter: 0
+datalen: null
+start_idx: 0
+
+# Simple kernels for testing (difficulty 1-2)
+# Selected the easiest kernels for quick testing
+target_kernels:
+  - "vector_addition_custom.py"
+  - "add_value.py"
+
+# Agent configuration
+output_path: "outputs/example/test/result.jsonl"
+
+# Iteration control (choose ONE mode):
+# MODE 1: Fixed iterations (traditional)
+max_iteration: 3        # Run exactly 3 iterations for testing
+
+# MODE 2: Generation budget (resource-aware, recommended for MAB)
+# generation_budget_per_kernel: 100  # Each kernel gets 100 code generations
+# max_iteration: 0  # Must set to 0 when using budget mode
+
+# NOTE: Cannot use both modes simultaneously! Choose ONE:
+#  - Iteration mode: Set max_iteration > 0, do not set generation_budget_per_kernel
+#  - Budget mode: Set generation_budget_per_kernel > 0, set max_iteration = 0
+
+multi_thread: true
+thread_num: 4
+
+# ==================== MAB Configuration ====================
+# Hierarchical multi-armed bandit framework for strategy selection
+mab_config:
+  ucb_c: 2.0                         # UCB exploration parameter
+  cluster_K: 3                        # Number of behavioral clusters
+  cluster_tau: 10                     # Re-clustering interval (iterations)
+  within_cluster_temperature: 1.0     # Softmax temperature for within-cluster sampling
+  ncu_enabled: true                  # Disable NCU profiling for testing
+  ncu_cache_dir: "./ncu_profiler_cache"  # NCU profiling cache directory
+
+  # Hardware saturation threshold (%)
+  # Scalar (backward compatible): theta_sat: 75.0
+  # Per-dimension thresholds:
+  theta_sat:
+    sm: 80.0
+    dram: 70.0
+    l2: 75.0
+
+  # Strategy-to-hardware target mapping (optional, shown with defaults):
+  # strategy_target_map:
+  #   tiling: "l2"
+  #   vectorization: "dram"
+  #   fusion: "dram"
+  #   pipeline: "sm"
+  #   reordering: "sm"
+  #   access_layout: "dram"

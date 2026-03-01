@@ -1,0 +1,91 @@
+# Full configuration template for KernelBand
+# This config shows all available parameters with documentation
+
+# ==================== LLM Configuration ====================
+api_key: ""                    # API key (or set OPENAI_API_KEY env var)
+# base_url: ""                 # Custom endpoint (or set MODEL_API_URL env var)
+model_id: "gpt-4o-mini"        # LLM model identifier
+model_type: "openai"            # Model type: "openai" or "claude"
+temperature: 1.0                # LLM sampling temperature (paper default: 1.0)
+max_tokens: 16384               # Max output tokens (paper default: 16384)
+
+# ==================== Dataset Paths ====================
+statis_path: "data/TritonBench/statistics.json"
+py_folder: "data/TritonBench/kernels"
+instruction_path: "data/TritonBench/statistics.json"
+corpus_path: "data/TritonBench/corpus/train_crawl.json"
+golden_metrics: "data/TritonBench/perf_metrics/golden_metrics"
+perf_ref_folder: null           # Auto-detected from GPU name if null
+perf_G_path: "data/TritonBench/perf_metrics"
+py_interpreter: "python"
+result_path: null
+mem_file: null                  # Path to resume from a previous memory file
+start_iter: 0
+datalen: null
+start_idx: 0
+
+# ==================== Target Kernels ====================
+# Select kernels to optimize (covering difficulty levels 1-5)
+target_kernels:
+  # Difficulty 1 (easy)
+  - "vector_addition_custom.py"
+  - "add_value.py"
+  # Difficulty 2
+  - "softmax_flaggems.py"
+  - "rmsnorm_triton.py"
+  # Difficulty 3
+  - "layer_norm_fwd.py"
+  - "cross_entropy2.py"
+  # Difficulty 4
+  - "fused_recurrent_delta.py"
+  # Difficulty 5 (hard)
+  - "attention_fwd_triton1.py"
+
+# ==================== Output ====================
+output_path: "outputs/result.jsonl"
+
+# ==================== Iteration Control ====================
+# Choose ONE of the two modes below:
+
+# MODE 1: Fixed iterations (traditional)
+max_iteration: 20               # Run exactly N iterations per kernel
+
+# MODE 2: Generation budget (resource-aware, recommended for MAB)
+# Uncomment below and set max_iteration: 0 to use budget mode
+# generation_budget_per_kernel: 200  # Each kernel gets 200 code generations
+# max_iteration: 0                   # Must be 0 when using budget mode
+
+# NOTE: Cannot use both modes simultaneously!
+
+# ==================== Execution ====================
+multi_thread: true
+thread_num: 8                   # Number of parallel code generation threads
+
+# ==================== MAB Configuration ====================
+# Hierarchical multi-armed bandit framework for strategy selection
+mab_config:
+  ucb_c: 2.0                         # UCB exploration parameter (higher = more exploration)
+  cluster_K: 3                        # Number of behavioral clusters
+  cluster_tau: 10                     # Re-clustering interval (iterations)
+  within_cluster_temperature: 1.0     # Softmax temperature for within-cluster sampling
+  ncu_enabled: true                   # Enable NCU profiling for hardware masking
+  ncu_cache_dir: "./ncu_profiler_cache"  # NCU profiling cache directory
+
+  # Hardware saturation threshold (%)
+  # Option 1 - Scalar (same threshold for all dimensions):
+  # theta_sat: 75.0
+
+  # Option 2 - Per-dimension thresholds (fine-grained control):
+  theta_sat:
+    sm: 80.0                          # SM (compute throughput) threshold
+    dram: 70.0                        # DRAM (memory bandwidth) threshold
+    l2: 75.0                          # L2 (cache locality) threshold
+
+  # Strategy-to-hardware target mapping (optional, defaults shown):
+  # strategy_target_map:
+  #   tiling: "l2"
+  #   vectorization: "dram"
+  #   fusion: "dram"
+  #   pipeline: "sm"
+  #   reordering: "sm"
+  #   access_layout: "dram"
