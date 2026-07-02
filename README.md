@@ -9,6 +9,11 @@
 </p>
 
 <p align="center">
+  🎉 <b>Accepted at <a href="https://icml.cc/virtual/2026/poster/62803">ICML 2026</a></b> 🎉
+</p>
+
+<p align="center">
+  <a href="https://icml.cc/virtual/2026/poster/62803"><img src="https://img.shields.io/badge/ICML-2026-8A2BE2.svg" alt="ICML 2026"></a>
   <a href="https://arxiv.org/abs/2511.18868"><img src="https://img.shields.io/badge/arXiv-2511.18868-b31b1b.svg" alt="arXiv"></a>
 </p>
 
@@ -26,6 +31,7 @@ KernelBand formulates GPU kernel optimization as a **Multi-Armed Bandit (MAB)** 
 
 ## News
 
+- **[2026/05]** Paper accepted to **ICML 2026**! See the [poster page](https://icml.cc/virtual/2026/poster/62803).
 - **[2026/02]** Code released.
 - **[2026/02]** Paper updated on [arXiv](https://arxiv.org/abs/2511.18868).
 - **[2025/11]** Paper released on [arXiv](https://arxiv.org/abs/2511.18868).
@@ -152,13 +158,11 @@ We gratefully acknowledge both teams for open-sourcing their work.
 If you find this work useful, please cite:
 
 ```bibtex
-@misc{ran2026kernelbandsteeringllmbasedkernel,
+@inproceedings{ran2026kernelband,
       title={KernelBand: Steering LLM-based Kernel Optimization via Hardware-Aware Multi-Armed Bandits}, 
       author={Dezhi Ran and Shuxiao Xie and Mingfang Ji and Anmin Liu and Mengzhou Wu and Yuan Cao and Yuzhe Guo and Hao Yu and Linyi Li and Yitao Hu and Wei Yang and Tao Xie},
+      booktitle={International Conference on Machine Learning (ICML)},
       year={2026},
-      eprint={2511.18868},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
       url={https://arxiv.org/abs/2511.18868}, 
 }
 ```
