@@ -199,7 +199,10 @@ class TritonBench:
                 line = tab * 2 + f'folder_path = "{results_path}"\n'
             performance_utils_lines.append(line)
         performance_utils = "".join(performance_utils_lines)
-        with open(performance_utils_path, 'w') as f:
+        # Write patched performance_utils.py to tmp_dir instead of overwriting
+        # the original file, which would permanently corrupt it for subsequent runs.
+        patched_utils_path = os.path.join(tmp_dir, "performance_utils.py")
+        with open(patched_utils_path, 'w') as f:
             f.write(performance_utils)
         input_file_list = os.listdir(input_folder_path)
         golden_metrics_list = os.listdir(self.golden_metrics_folder)
@@ -215,6 +218,7 @@ class TritonBench:
                     for line in lines:
                         if line == "sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))\n":
                             updated_lines.append(f"sys.path.append('{input_folder_path}')\n")
+                            updated_lines.append(f"sys.path.append('{tmp_dir}')\n")
                             updated_lines.append(f"sys.path.append('{self.perf_G_path}')\n")
                         if 'folder_path = ' in line:
                             indent = line[:len(line) - len(line.lstrip())]
