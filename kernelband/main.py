@@ -32,7 +32,7 @@ def main():
     elif model_type == 'claude':
         model = ClaudeModel(api_key=args.api_key, model_id=args.model_id, base_url=base_url)
     else:
-        raise ValueError(f"Unsupported model_type: {model_type}. Supported types: 'openai', 'gemini', 'claude'")
+        raise ValueError(f"Unsupported model_type: {model_type}. Supported types: 'openai', 'claude'")
 
     dataset = TritonBench(statis_path=args.statis_path, 
                           py_folder=args.py_folder, 
