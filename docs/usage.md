@@ -15,7 +15,7 @@ Detailed documentation for configuring and running KernelBand.
 
 ## Benchmark Data
 
-KernelBand evaluates on the **TritonBench-G** benchmark — a suite of 183 GPU kernel generation tasks. The benchmark data originates from [TritonBench](https://github.com/thunlp/TritonBench) (THUNLP), with corrections from [GEAK-eval](https://github.com/AMD-AIG-AIMA/GEAK) (AMD-AIG-AIMA) and additional KernelBand fixes for NVIDIA compatibility.
+KernelBand evaluates on the **TritonBench-G** benchmark — a suite of 184 GPU kernel generation tasks. The benchmark data originates from [TritonBench](https://github.com/thunlp/TritonBench) (THUNLP), with corrections from [GEAK-eval](https://github.com/AMD-AIG-AIMA/GEAK) (AMD-AIG-AIMA) and additional KernelBand fixes for NVIDIA compatibility.
 
 The data is included in this repository under `data/TritonBench/`. No additional download is required.
 

@@ -40,7 +40,7 @@ KernelBand formulates GPU kernel optimization as a **Multi-Armed Bandit (MAB)** 
 
 ### Main Results across 3 GPU Architectures (Table 1)
 
-Geometric mean speedup (standard mode, computed over correct tasks only). Evaluated on 183 TritonBench-G kernels with T=20 iterations.
+Geometric mean speedup (standard mode, computed over correct tasks only). Evaluated on 184 TritonBench-G kernels with T=20 iterations.
 
 | Platform | Method | Correct (%) | Fast@1 (%) | Speedup |
 |:---|:---|:---:|:---:|:---:|
